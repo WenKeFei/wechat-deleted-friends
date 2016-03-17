@@ -9,6 +9,7 @@
 
 Mac OS用法:
 启动Terminal
+pip install requests
 
 `$ python wdf.py`
 
