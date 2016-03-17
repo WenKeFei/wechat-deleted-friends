@@ -73,7 +73,7 @@ def getUUID():
         '_': int(time.time()),
     }
 
-    r= myRequests.get(url=url, params=params)
+    r= myRequests.get(url=url, params=params, verify=False)
     r.encoding = 'utf-8'
     data = r.text
 
@@ -101,7 +101,7 @@ def showQRImage():
         '_': int(time.time()),
     }
 
-    r = myRequests.get(url=url, params=params)
+    r = myRequests.get(url=url, params=params, verify=False)
 
     tip = 1
 
@@ -126,7 +126,7 @@ def waitForLogin():
     url = 'https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?tip=%s&uuid=%s&_=%s' % (
         tip, uuid, int(time.time()))
 
-    r = myRequests.get(url=url)
+    r = myRequests.get(url=url, verify=False)
     r.encoding = 'utf-8'
     data = r.text
 
@@ -176,7 +176,7 @@ def waitForLogin():
 def login():
     global skey, wxsid, wxuin, pass_ticket, BaseRequest
 
-    r = myRequests.get(url=redirect_uri)
+    r = myRequests.get(url=redirect_uri, verify=False)
     r.encoding = 'utf-8'
     data = r.text
 
@@ -219,7 +219,7 @@ def webwxinit():
     params  = {'BaseRequest': BaseRequest }
     headers = {'content-type': 'application/json; charset=UTF-8'}
 
-    r = myRequests.post(url=url, data=json.dumps(params),headers=headers)
+    r = myRequests.post(url=url, data=json.dumps(params),headers=headers, verify=False)
     r.encoding = 'utf-8'
     data = r.json()
 
@@ -294,7 +294,7 @@ def createChatroom(UserNames):
     }
     headers = {'content-type': 'application/json; charset=UTF-8'}
 
-    r = myRequests.post(url=url, data=json.dumps(params),headers=headers)
+    r = myRequests.post(url=url, data=json.dumps(params),headers=headers, verify=False)
     r.encoding = 'utf-8'
     data = r.json()
 
@@ -326,7 +326,7 @@ def deleteMember(ChatRoomName, UserNames):
     }
     headers = {'content-type': 'application/json; charset=UTF-8'}
 
-    r = myRequests.post(url=url, data=json.dumps(params),headers=headers)
+    r = myRequests.post(url=url, data=json.dumps(params),headers=headers, verify=False)
     r.encoding = 'utf-8'
     data = r.json()
 
@@ -348,7 +348,7 @@ def addMember(ChatRoomName, UserNames):
     }
     headers = {'content-type': 'application/json; charset=UTF-8'}
 
-    r = myRequests.post(url=url, data=json.dumps(params),headers=headers)
+    r = myRequests.post(url=url, data=json.dumps(params),headers=headers, verify=False)
     r.encoding = 'utf-8'
     data = r.json()
 
@@ -387,7 +387,7 @@ def syncCheck():
         'r': int(time.time()),
     }
 
-    r = myRequests.get(url=url,params=params)
+    r = myRequests.get(url=url,params=params, verify=False)
     r.encoding = 'utf-8'
     data = r.text
 
@@ -415,7 +415,7 @@ def webwxsync():
     }
     headers = {'content-type': 'application/json; charset=UTF-8'}
 
-    r = myRequests.post(url=url, data=json.dumps(params))
+    r = myRequests.post(url=url, data=json.dumps(params), verify=False)
     r.encoding = 'utf-8'
     data = r.json()
 
